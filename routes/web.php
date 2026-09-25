@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAssetController;
 use App\Http\Controllers\AdminBorrowingController;
 use App\Http\Controllers\AdminBuildingController;
 use App\Http\Controllers\BorrowingController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Asset;
 use App\Models\Borrowing;
@@ -65,6 +66,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Chatbot API routes
+    Route::get('/chatbot/stok', [ChatbotController::class, 'stok'])->name('chatbot.stok');
+    Route::get('/chatbot/status-pengajuan', [ChatbotController::class, 'statusPengajuan'])->name('chatbot.status-pengajuan');
 });
 
 require __DIR__.'/auth.php';
